@@ -1,0 +1,96 @@
+.home {
+  background-color: #111;
+  width: 100vw;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+}
+
+.left, .right {
+  width: 50%;
+}
+
+.home .pageContainer {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  padding: 0 50px;
+  width: calc(100% - 100px);
+  gap: 100px;
+}
+
+.home h1 {
+  margin: 20px 0;
+}
+
+.home .buttonsBar {
+  margin: 20px 0;
+
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px;
+}
+
+.home .modifyHours button,
+.home .actions button,
+.home .buttonsBar button {
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  outline: none;
+  background-color: #191919;
+
+  color: var(--text-color, #fff);
+
+  border-radius: 10px;
+
+
+  width: 250px;
+
+  cursor: pointer;
+}
+
+.soinsHeader {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.soinsHeader .entry {
+  padding: 20px;
+
+  border-bottom: 1px solid #666;
+
+  transition: .3s;
+
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.soinsHeader .entry svg {
+  margin-left: 5px;
+
+  margin-top: -2px;
+
+  opacity: .3;
+
+  transition: .3s;
+}
+.soinsHeader .entry svg:hover {
+  opacity: .7;
+}
+
+
+.soinsHeader .entry:hover {
+  border-color: #aaa;
+}
+
+.soinsHeader .entry.selected {
+  border-color: #fff;
+}

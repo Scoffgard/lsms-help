@@ -1,0 +1,27 @@
+header.main {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+
+header.main .entry {
+  width: 100%;
+
+  text-align: center;
+
+  padding: 20px;
+
+  border-bottom: 1px solid #666;
+
+  transition: .3s;
+
+  cursor: pointer;
+}
+
+header.main .entry:hover {
+  border-color: #aaa;
+}
+
+header.main .entry.selected {
+  border-color: #fff;
+}

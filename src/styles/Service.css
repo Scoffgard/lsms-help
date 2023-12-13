@@ -1,0 +1,75 @@
+.home .actions {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 20px;
+  
+  gap: 10px;
+
+  align-items: flex-end;
+}
+
+.home .action {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.home .actionButton {
+  background-color: #222;
+  border-radius: 5px;
+
+  width: 15px;
+  height: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  margin: 0 5px;
+}
+
+.home .actionButton.disabled {
+  opacity: .3;
+}
+
+.home .actions input {
+  padding: 5px;
+  border: 1px solid #fff;
+  outline: none;
+  background-color: #191919;
+
+  color: #fff;
+
+  border-radius: 10px;
+}
+
+.home .modifyHours {
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.home .modifyHours input {
+  padding: 5px;
+  border: 1px solid #fff;
+  outline: none;
+  background-color: #191919;
+
+  color: #fff;
+
+  border-radius: 10px;
+  
+  width: 240px;
+}
+
+.home .modifyHours.disabled {
+  display: none;
+}
