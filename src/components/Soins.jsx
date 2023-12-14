@@ -31,6 +31,7 @@ export default function Soins(props) {
 
   const handleChange = (name, event) => {
     const newReport = { ...report };
+    if (name === 'patient-name') props.setName(event.target.value);
     newReport[name] = event.target.value;
     setReport(newReport);
   }
@@ -233,7 +234,7 @@ export default function Soins(props) {
             <input type='checkbox' id="private-room" checked={costs['room'] || false} onChange={(e) => handleCostChange(e.target.checked, 'room')}/>
           </div>
           <div className="priceInput">
-            <label htmlFor="other-cost">Couts autres :</label>
+            <label htmlFor="other-cost">Coûts autres :</label>
             <input id="other-cost" type="number" placeholder="Ex: 10000" onChange={(e) => handleCostChange(e.target.value, 'other')} value={costs['other'] || ''}/>
           </div>
         </div>

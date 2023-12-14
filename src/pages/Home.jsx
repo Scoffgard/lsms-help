@@ -16,7 +16,9 @@ export default function Home() {
   const [page, setPage] = useState(0);
 
   const [soinsList, setSoinsList] = useState([1]);
-  const [soinsCurrent, setSoinsCurrent] = useState(1)
+  const [soinsCurrent, setSoinsCurrent] = useState(1);
+
+  const [nameList, setNameList] = useState([]);
 
   const menuEntries = [
     'Service',
@@ -33,14 +35,27 @@ export default function Home() {
     for(let [index, soin] of soinsList.entries()) {
       soinsEle.push(
         <div key={soin} className='pageContainer' style={{display: soinsCurrent === soin ? 'inherit' : 'none'}}>
-          <Soins pageSetter={setPage} pageVal={page} />
+          <Soins pageSetter={setPage} pageVal={page} setName={(name) => {
+            const prevNameList = [...nameList];
+            prevNameList[index] = name;
+            setNameList(prevNameList);
+          }}/>
         </div>
       );
       menuEle.push(<div 
         className={`entry ${soinsCurrent === soin && 'selected'}`}
         onClick={() => setSoinsCurrent(soin)}
       >
-        Rapport n°{soin}
+        Rapport
+        {nameList[index] ?
+          <>
+          &nbsp;de&nbsp;<b>{nameList[index]}</b> 
+          </>
+          :  
+          <>
+            &nbsp;n°{index+1}
+          </>
+        }
         {index !== 0 &&
           <Cross
             style={{fill: 'white'}}
