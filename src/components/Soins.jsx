@@ -13,6 +13,22 @@ export default function Soins(props) {
 
   const detailsRef = useRef();
 
+
+  const costsList = {
+    IRM: {
+      cost: 500,
+      display: 'IRM',
+    },
+    radio: {
+      cost: 500,
+      display: 'Radio',
+    },
+    stuff: {
+      cost: 2000,
+      display: 'Accessoires (Béquilles, Fauteil Roulant, Attelle, Minerve, ...)',
+    },
+  }
+
   const handleChange = (name, event) => {
     const newReport = { ...report };
     newReport[name] = event.target.value;
@@ -33,16 +49,12 @@ export default function Soins(props) {
         case 'injuries':
           costsVal+= +costs[name];
           break;
-        case 'radio':
-        case 'IRM':
-          costsVal+= !costs[name] ? 0 : 500;
-          break;
-        case 'stuff':
-          costsVal+= !costs[name] ? 0 : 2000;
-          break;
         case 'room': 
           costsVal+= !costs[name] ? 0 : 10000;
-          break
+          break;
+        default: 
+          costsVal+= !costs[name] ? 0 : costs[name] * costsList[name].cost;
+          break;
       }
     }
     return costsVal;
@@ -55,7 +67,37 @@ export default function Soins(props) {
       setReport(newReport)
     }
     setHasClicked(false);
-  }, [props.pageVal])
+  }, [props.pageVal]);
+
+
+  const generateCostsList = () => {
+    const ele = [];
+    for (let key in costsList) {
+      ele.push(
+        <div className="priceInput">
+          <p className='cb'>{costsList[key].display} ({costsList[key].cost} $)</p>
+          <div className="numberSelector">
+            <span
+              className={`actionButton ${(!costs[key] || costs[key] === 0) && 'disabled'}`}
+              onClick={() => {
+                if (!costs[key] || costs[key] === 0) return;
+                handleCostChange(costs[key] - 1, key);
+              }}
+            >-</span>
+            <span>{costs[key] || 0}</span>
+            <span
+              className='actionButton'
+              onClick={() => {
+                if (!costs[key]) handleCostChange(1, key);
+                else handleCostChange(costs[key] + 1, key);
+              }}
+            >+</span>
+          </div>
+        </div>
+      )
+    }
+    return ele;
+  }
 
   return (
     <>
@@ -185,18 +227,7 @@ export default function Soins(props) {
               <option value="5000">Graves (5,000 $)</option>
             </select>
           </div>
-          <div className="priceInput">
-            <label htmlFor='IRM' className='cb'>IRM (500 $)</label>
-            <input type='checkbox' id="IRM" checked={costs['IRM'] || false} onChange={(e) => handleCostChange(e.target.checked, 'IRM')}/>
-          </div>
-          <div className="priceInput">
-            <label htmlFor='radio' className='cb'>Radio (500 $)</label>
-            <input type='checkbox' id="radio" checked={costs['radio'] || false} onChange={(e) => handleCostChange(e.target.checked, 'radio')}/>
-          </div>
-          <div className="priceInput">
-            <label htmlFor='stuff' className='cb'>Accessoires (Béquilles, Fauteil Roulant, Attelle, Minerve, ...) (2,000 $)</label>
-            <input type='checkbox' id="stuff" checked={costs['stuff'] || false} onChange={(e) => handleCostChange(e.target.checked, 'stuff')}/>
-          </div>
+          {generateCostsList()}
           <div className="priceInput">
             <label htmlFor='private-room' className='cb'>Chambre privée (10,000 $)</label>
             <input type='checkbox' id="private-room" checked={costs['room'] || false} onChange={(e) => handleCostChange(e.target.checked, 'room')}/>

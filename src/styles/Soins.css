@@ -79,3 +79,11 @@
 
   transform: translateY(-25%);
 }
+
+.priceInput,
+.priceInput .numberSelector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
