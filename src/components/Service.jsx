@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
+
+import { newDate } from "../utlis";
+
 import TextBlock from "./TextBlock";
 
 import '../styles/Service.css';
 
 export default function Service() {
 
-  const [loadDate, setLoadDate] = useState(new Date(window.localStorage.getItem('service-start-date') || new Date()));
+  const [loadDate, setLoadDate] = useState(newDate(window.localStorage.getItem('service-start-date') || newDate()));
   const [customHour, setCustomHour] = useState([]);
   const [endDate, setEndDate] = useState();
 
@@ -25,7 +28,7 @@ export default function Service() {
   ];
 
   useEffect(() => {
-    if (!window.localStorage.getItem('service-start-date')) window.localStorage.setItem('service-start-date', new Date());
+    if (!window.localStorage.getItem('service-start-date')) window.localStorage.setItem('service-start-date', newDate());
     if (window.localStorage.getItem('service-actions')) {
       setActions(JSON.parse(window.localStorage.getItem('service-actions')))
     }
@@ -35,7 +38,7 @@ export default function Service() {
       setOtherCount(oth.length)
     }
     if (window.localStorage.getItem('service-end-date')) {
-      setEndDate(new Date(window.localStorage.getItem('service-end-date')))
+      setEndDate(newDate(window.localStorage.getItem('service-end-date')))
     }
   }, [])
 
@@ -160,8 +163,8 @@ export default function Service() {
         <div className='buttonsBar'>
           <button
             onClick={() => {
-              setLoadDate(new Date());
-              window.localStorage.setItem('service-start-date', new Date());
+              setLoadDate(newDate());
+              window.localStorage.setItem('service-start-date', newDate());
               setEndDate();
               window.localStorage.removeItem('service-end-date');
               setActions([]);
@@ -178,8 +181,8 @@ export default function Service() {
           </button>
           <button
             onClick={() => {
-              setEndDate(new Date());
-              window.localStorage.setItem('service-end-date', new Date());
+              setEndDate(newDate());
+              window.localStorage.setItem('service-end-date', newDate());
             }}
           >
             Prendre une fin de service
@@ -219,7 +222,7 @@ export default function Service() {
           />
           <button
             onClick={(e) => {
-              const cDate = new Date(loadDate);
+              const cDate = newDate(loadDate);
               cDate.setHours(customHour[0] != NaN ? customHour[0] : loadDate.getHours(), customHour[1] != NaN ? customHour[1] : loadDate.getMinutes(), 0);
               setLoadDate(cDate)
             }}
