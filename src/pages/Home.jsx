@@ -63,6 +63,9 @@ export default function Home() {
               const prevSoinsList = [...soinsList];
               prevSoinsList.splice(index, 1);
               setSoinsList(prevSoinsList);
+              const prevNameList = [...nameList];
+              prevNameList.splice(index, 1);
+              setNameList(prevNameList);
             }}
           />
         }
