@@ -3,3 +3,5 @@ export const newDate = (val) => {
   date.setSeconds(0, 0);
   return date;
 }
+
+export const toFormatedPrice = (val) => val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

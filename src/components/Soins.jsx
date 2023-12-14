@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import TextBlock from './TextBlock';
 
 import '../styles/Soins.css';
+import { toFormatedPrice } from '../utlis';
 
 export default function Soins(props) {
 
@@ -10,6 +11,8 @@ export default function Soins(props) {
   const [costs, setCosts] = useState({});
 
   const [hasClicked, setHasClicked] = useState(false);
+
+  const [details, setDetails] = useState(false);
 
   const detailsRef = useRef();
 
@@ -100,6 +103,32 @@ export default function Soins(props) {
     return ele;
   }
 
+  const generateDetailsList = () => {
+    if (!details) return;
+    const detailsList = [];
+    for (let name in costs) {
+      switch (name) {
+        case 'other':
+          if (!costs[name]) break;
+          detailsList.push('Autres : ' + toFormatedPrice(costs[name]) + ' $');
+          break;
+        case 'injuries':
+          if (!costs[name]) break;
+          detailsList.push('Blessure ' + (costs[name] === 5000 ? 'Grave' : costs[name] === 2500 ? 'Moyenne' : 'Légére') + ' : ' + toFormatedPrice(costs[name]) + ' $');
+          break;
+        case 'room': 
+          if (!costs[name]) break;
+          detailsList.push('Chambre privée : ' + toFormatedPrice(10000) + ' $');
+          break;
+        default: 
+          if (!costs[name]) break;
+          detailsList.push(costs[name] + 'x ' + costsList[name].display + ' : ' + toFormatedPrice(costs[name] * costsList[name].cost) + ' $');
+          break;
+      }
+    }
+    return detailsList.join(', ')
+  }
+
   return (
     <>
       <div className='left'>
@@ -112,7 +141,7 @@ export default function Soins(props) {
           - **Récapitulatif des blessures :** {report['soins-recap']}<br />
           - **Récapitulatif de la raison de l’hospitalisation :** {report['soins-reason']}<br />
           - **Examens (DÉTAILLER LES OP) :** {report['soins-details']}<br />
-          - **Coût total (en $) :** {calculateCostValue().toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} $
+          - **Coût total (en $) :** {toFormatedPrice(calculateCostValue())} $ ({generateDetailsList()})
         </TextBlock>
         <div className='buttonsBar'>
           <button
@@ -155,6 +184,13 @@ export default function Soins(props) {
             }}
           >
             Rapport paiement LSPD-BCSO
+          </button>
+          <button
+            onClick={() => {
+              setDetails(val => !val)
+            }}
+          >
+            {!details ? 'Activer le détail' : 'Désactiver le détail'}
           </button>
         </div>
       </div>
