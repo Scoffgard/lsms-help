@@ -39,6 +39,11 @@ export default function Home() {
             const prevNameList = [...nameList];
             prevNameList[index] = name;
             setNameList(prevNameList);
+          }}
+          resetName={() => {
+            const prevNameList = [...nameList];
+            prevNameList.splice(index, 1);
+            setNameList(prevNameList);
           }}/>
         </div>
       );

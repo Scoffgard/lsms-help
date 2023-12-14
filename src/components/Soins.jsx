@@ -119,6 +119,7 @@ export default function Soins(props) {
             onClick={() => {
               setReport({'lsms-name': report['lsms-name']});
               setCosts({});
+              props.resetName();
               detailsRef.current.innerHTML = '';
             }}
             style={{
