@@ -196,7 +196,7 @@ export default function Service() {
             placeholder='Heures (00)'
             onChange={(e) => {
               let nb = Number.parseInt(e.target.value);
-              if (!nb) return;
+              if (nb === NaN) return;
               if (nb < 0) nb = 0;
               if (nb >= 24) nb = 23;
               const newHour = [...customHour];
@@ -209,7 +209,7 @@ export default function Service() {
             placeholder='Minutes (00)'
             onChange={(e) => {
               let nb = Number.parseInt(e.target.value);
-              if (!nb) return;
+              if (nb === NaN) return;
               if (nb < 0) nb = 0;
               if (nb >= 60) nb = 59;
               const newHour = [...customHour];
@@ -220,7 +220,7 @@ export default function Service() {
           <button
             onClick={(e) => {
               const cDate = new Date(loadDate);
-              cDate.setHours(customHour[0] + 1 || loadDate.getHours(), customHour[1] || loadDate.getMinutes(), 0);
+              cDate.setHours(customHour[0] != NaN ? customHour[0] : loadDate.getHours(), customHour[1] != NaN ? customHour[1] : loadDate.getMinutes(), 0);
               setLoadDate(cDate)
             }}
           >Définir l'heure de début</button>
