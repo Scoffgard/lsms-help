@@ -87,3 +87,21 @@
   align-items: center;
   justify-content: center;
 }
+
+.linksToTrello {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+
+  bottom: 20px;
+  left: 20px;
+
+  gap: 20px;
+}
+
+.linksToTrello a {
+  color: #55c;
+}

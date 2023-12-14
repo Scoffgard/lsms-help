@@ -239,6 +239,10 @@ export default function Soins(props) {
         </div>
       </div>
 
+      <div className="linksToTrello">
+        <a target="_blank" href="https://trello.com/b/EOC2a8lf/dossiers-patients-a-l">Dossiers Patients de A à L</a>
+        <a target="_blank" href="https://trello.com/b/i6gRwfon/dossiers-patients-m-z">Dossiers Patients de M à Z</a>
+      </div>
     </>
   )
 }
