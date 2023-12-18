@@ -17,6 +17,7 @@ export default function TextBlock(props) {
   const childrenToString = (children) => {
     let text = '';
     for (let element of children) {
+      if (!element) continue;
       if (element.type && element.type === 'br') {
         text+= '\n';
       } else {
