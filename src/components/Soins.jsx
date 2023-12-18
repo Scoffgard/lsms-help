@@ -114,7 +114,8 @@ export default function Soins(props) {
           break;
         case 'injuries':
           if (!costs[name]) break;
-          detailsList.push('Blessure ' + (costs[name] === 5000 ? 'Grave' : costs[name] === 2500 ? 'Moyenne' : 'Légére') + ' : ' + toFormatedPrice(costs[name]) + ' $');
+          console.log(costs[name])
+          detailsList.push('Blessure ' + (costs[name] === '5000' ? 'Grave' : costs[name] === '2500' ? 'Moyenne' : 'Légére') + ' : ' + toFormatedPrice(costs[name]) + ' $');
           break;
         case 'room': 
           if (!costs[name]) break;
@@ -126,7 +127,7 @@ export default function Soins(props) {
           break;
       }
     }
-    return detailsList.join(', ')
+    return `(${detailsList.join(', ')})`;
   }
 
   return (
@@ -141,7 +142,7 @@ export default function Soins(props) {
           - **Récapitulatif des blessures :** {report['soins-recap']}<br />
           - **Récapitulatif de la raison de l’hospitalisation :** {report['soins-reason']}<br />
           - **Examens (DÉTAILLER LES OP) :** {report['soins-details']}<br />
-          - **Coût total (en $) :** {toFormatedPrice(calculateCostValue())} $ ({generateDetailsList()})
+          - **Coût total (en $) :** {toFormatedPrice(calculateCostValue())} $ {generateDetailsList()}
         </TextBlock>
         <div className='buttonsBar'>
           <button
