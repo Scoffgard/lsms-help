@@ -28,7 +28,7 @@ export default function Soins(props) {
     },
     stuff: {
       cost: 2000,
-      display: 'Accessoires (Béquilles, Fauteil Roulant, Attelle, Minerve, ...)',
+      display: 'Accessoires (Béquilles, Fauteuil Roulant, Attelle, Minerve, ...)',
     },
   }
 
