@@ -9,7 +9,7 @@ import LspdBcso from '../components/LspdBcso';
 
 import {ReactComponent as Cross} from '../assets/cross.svg';
 
-import ChristmasHat from '../assets/christmas_hat.png';
+//import ChristmasHat from '../assets/christmas_hat.png';
 
 import '../styles/Home.css';
 
@@ -100,8 +100,8 @@ export default function Home() {
 
   return (
     <div className="home">
-      <img src={ChristmasHat} className='hat'/>
-      <div  className='snow'/>
+      {/*<img src={ChristmasHat} className='hat'/>
+      <div className='snow'/>*/}
       <h1>Aide LSMS</h1>
       <Header page={page} setPage={setPage} entries={menuEntries} />
 
