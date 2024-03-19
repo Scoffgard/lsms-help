@@ -23,6 +23,7 @@ export default function Service() {
     'Blessures légeres',
     'Blessures moyennes',
     'Blessures graves',
+    '10-17',
     '10-18',
     '10-19',
   ];
