@@ -6,6 +6,7 @@ import Service from '../components/Service';
 import RefusSoins from '../components/RefusSoins';
 import Impayes from '../components/Impayes';
 import LspdBcso from '../components/LspdBcso';
+import PH from '../components/PH';
 
 import {ReactComponent as Cross} from '../assets/cross.svg';
 
@@ -28,6 +29,7 @@ export default function Home() {
     'Refus de soins',
     'Impayés',
     'LSPD-BCSO',
+    'PH',
   ];
 
   const generateSoinsList = () => {
@@ -119,6 +121,9 @@ export default function Home() {
       </div>
       <div className='pageContainer' style={{display: page === 4 ? 'inherit' : 'none'}}>
         <LspdBcso pageSetter={setPage} pageVal={page} />
+      </div>
+      <div className='pageContainer' style={{display: page === 5 ? 'inherit' : 'none'}}>
+        <PH pageSetter={setPage} pageVal={page} />
       </div>
     </div>
   )
