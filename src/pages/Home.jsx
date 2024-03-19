@@ -5,7 +5,7 @@ import Soins from '../components/Soins';
 import Service from '../components/Service';
 import RefusSoins from '../components/RefusSoins';
 import Impayes from '../components/Impayes';
-import LspdBcso from '../components/LspdBcso';
+import Sast from '../components/Sast';
 import PH from '../components/PH';
 
 import {ReactComponent as Cross} from '../assets/cross.svg';
@@ -28,7 +28,7 @@ export default function Home() {
     'Rapport de soins',
     'Refus de soins',
     'Impayés',
-    'LSPD-BCSO',
+    'SAST',
     'PH',
   ];
 
@@ -120,7 +120,7 @@ export default function Home() {
         <Impayes pageSetter={setPage} pageVal={page} />
       </div>
       <div className='pageContainer' style={{display: page === 4 ? 'inherit' : 'none'}}>
-        <LspdBcso pageSetter={setPage} pageVal={page} />
+        <Sast pageSetter={setPage} pageVal={page} />
       </div>
       <div className='pageContainer' style={{display: page === 5 ? 'inherit' : 'none'}}>
         <PH pageSetter={setPage} pageVal={page} />

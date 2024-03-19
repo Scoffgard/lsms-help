@@ -174,17 +174,17 @@ export default function Soins(props) {
           </button>
           <button
             onClick={() => {
-              window.localStorage.setItem('lspd-bcso-data', JSON.stringify({
+              window.localStorage.setItem('sast-data', JSON.stringify({
                 name: report['patient-name'],
                 cost: calculateCostValue(),
               }));
-              props.pageSetter(4) // Page des LSPD-BCSO
+              props.pageSetter(4) // Page des SAST
             }}
             style={{
               '--text-color': '#99f'
             }}
           >
-            Rapport paiement LSPD-BCSO
+            Rapport paiement SAST
           </button>
           <button
             onClick={() => {

@@ -14,13 +14,13 @@ export default function LspdBcso(props) {
   }
 
   useEffect(() => {
-    if (window.localStorage.getItem('lspd-bcso-data')) {
-      const lspdBcsoData = JSON.parse(window.localStorage.getItem('lspd-bcso-data'));
+    if (window.localStorage.getItem('sast-data')) {
+      const lspdBcsoData = JSON.parse(window.localStorage.getItem('sast-data'));
       const newReport = {...report};
       newReport['patient-name'] = lspdBcsoData.name;
       newReport['cost'] = lspdBcsoData.cost.toString();
       setReport(newReport);
-      window.localStorage.removeItem('lspd-bcso-data');
+      window.localStorage.removeItem('sast-data');
     }
   }, [props.pageVal]);
 
