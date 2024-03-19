@@ -4,6 +4,8 @@ import { newDate } from "../utlis";
 
 import TextBlock from "./TextBlock";
 
+import { ReactComponent as TrashIcon } from '../assets/trash.svg';
+
 import '../styles/Service.css';
 
 export default function Service() {
@@ -86,10 +88,19 @@ export default function Service() {
     return ele;
   }
 
+  const removeOtherItem = (index) => {
+    let newOthers = others;
+    if (others.length >= 1) newOthers.splice(index, 1);
+    setOthers(newOthers);
+    setOtherCount(val => val-1);
+    window.localStorage.setItem('service-others', JSON.stringify(newOthers));
+  }
+
   const generateOtherList = () => {
     const ele = [];
     for (let i = 0; i < otherCount; i++) {
-      ele.push(<div className='action'>
+      ele.push(<div className='action' key={otherCount + '-' + i}>
+        <span className='del' onClick={() => removeOtherItem(i)}><TrashIcon /></span>
         <input
           type="text"
           placeholder='Autre'
@@ -151,6 +162,14 @@ export default function Service() {
     return str;
   }
 
+  const resetOthers = () => {
+    for (let [index, ele] of others.entries()) {
+      let newEle = ele;
+      newEle.number = 0;
+      others[index] = newEle;
+    }
+  }
+
   return (
     <>
       <div className="left">
@@ -170,9 +189,9 @@ export default function Service() {
               window.localStorage.removeItem('service-end-date');
               setActions([]);
               window.localStorage.removeItem('service-actions');
-              setOthers([]);
-              window.localStorage.removeItem('service-others');
-              setOtherCount(0);
+
+              resetOthers();
+              window.localStorage.setItem('service-others', JSON.stringify(others));
             }}
             style={{
               '--text-color': '#f55'
