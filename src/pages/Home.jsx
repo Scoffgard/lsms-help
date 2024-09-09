@@ -104,7 +104,7 @@ export default function Home() {
     <div className="home">
       {/*<img src={ChristmasHat} className='hat'/>
       <div className='snow'/>*/}
-      <h1>Aide LSMS</h1>
+      <h1>Aide SAMS</h1>
       <Header page={page} setPage={setPage} entries={menuEntries} />
 
       <div className='pageContainer' style={{display: page === 0 ? 'inherit' : 'none'}}>

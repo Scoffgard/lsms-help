@@ -134,7 +134,7 @@ export default function Soins(props) {
     <>
       <div className='left'>
         <TextBlock>
-          - **Prénom Nom du LSMS :** {report['lsms-name']}<br />
+          - **Prénom Nom du SAMS :** {report['lsms-name']}<br />
           - **Prénom Nom ID du patient :** {report['patient-name']}<br />
           - **Date de naissance :** {report['patient-bd']}<br />
           - **Profession :** {report['patient-job'] || '//'}<br />
