@@ -27,8 +27,8 @@ export default function RefusSoins(props) {
   }, [props.pageVal]);
 
   const generateDateString = (date) => {
-    const dateStr = `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()} `;
-    const timeStr = `${date.getHours()}h${date.getMinutes()}`;
+    const dateStr = `${String(date.getDate()).padStart(2, '0')}/${String(date.getMonth()+1).padStart(2, '0')}/${date.getFullYear()} `;
+    const timeStr = `${date.getHours()}h${String(date.getMinutes()).padStart(2, '0')}`;
     return dateStr + timeStr;
   }
 
