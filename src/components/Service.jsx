@@ -54,7 +54,7 @@ export default function Service() {
   
   const getEndDateString = () => {
     if (!endDate) return '';
-    return endDate.getHours() + 'h' + String(endDate.getMinutes()).padStart(2, '0');
+    return String(endDate.getHours()).padStart(2, '0') + 'h' + String(endDate.getMinutes()).padStart(2, '0');
   }
 
   const generateActionsList = () => {
@@ -174,7 +174,7 @@ export default function Service() {
     <>
       <div className="left">
         <TextBlock>
-          - PDS :&nbsp;{loadDate.getHours()}h{String(loadDate.getMinutes()).padStart(2, '0')}<br />
+          - PDS :&nbsp;{String(loadDate.getHours()).padStart(2, '0')}h{String(loadDate.getMinutes()).padStart(2, '0')}<br />
           - Rapide recap des opérations réalisées :&nbsp;{displayActionsList()}<br />
           - FDS :&nbsp;{getEndDateString()}<br />
           **- Total :&nbsp;{getOffset()}**
