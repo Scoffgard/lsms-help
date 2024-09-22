@@ -109,6 +109,7 @@
 
 .home .snow {
   position: absolute;
+  display: block;
 
   background: url(../assets/snow.gif);
 
@@ -124,6 +125,30 @@
   pointer-events: none;
 
   animation: snowDisapear 3s 2s forwards;
+}
+
+.home .helper {
+  position: absolute;
+  top : 10px;
+  left: 10px;
+  
+  padding: 5px 10px;
+
+  border: 1px solid #fff;
+  background-color: #333333;
+
+  border-radius: 10px;
+
+  font-size: 12px;
+}
+
+.home .helper span.link {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.home .helper span.tipaction {
+  cursor: pointer;
 }
 
 @keyframes snowDisapear {

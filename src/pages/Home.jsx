@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Header from '../components/Header';
 import Soins from '../components/Soins';
@@ -7,6 +7,7 @@ import RefusSoins from '../components/RefusSoins';
 import Impayes from '../components/Impayes';
 import Sast from '../components/Sast';
 import PH from '../components/PH';
+import Settings from '../components/Settings';
 
 import {ReactComponent as Cross} from '../assets/cross.svg';
 
@@ -21,6 +22,8 @@ export default function Home() {
   const [soinsList, setSoinsList] = useState([1]);
   const [soinsCurrent, setSoinsCurrent] = useState(1);
 
+  const [showTip, setShowTip] = useState(true);
+
   const [nameList, setNameList] = useState([]);
 
   const menuEntries = [
@@ -30,6 +33,7 @@ export default function Home() {
     'Impayés',
     'SAST',
     'PH',
+    'Paramètres',
   ];
 
   const generateSoinsList = () => {
@@ -172,6 +176,26 @@ export default function Home() {
 
   return (
     <div className="home">
+      { showTip ?
+        <div className='helper'>
+          Psst : Pour enregistrer le nom vous avez maintenant l'onglet :&nbsp;
+          <span 
+            className="link"
+            onClick={() => setPage(7)}
+          >Paramètres</span>&emsp;
+          <span 
+            className='tipaction'
+            onClick={() => setShowTip(false)}
+          >✖</span>
+        </div>
+        :
+        <div className='helper'>
+          <span 
+            className='tipaction'
+            onClick={() => setShowTip(true)}
+          ><b>?</b></span>
+        </div>
+      }
       {/*<img src={ChristmasHat} className='hat'/>
       <div className='snow'/>*/}
       <h1>Aide SAMS</h1>
@@ -194,6 +218,9 @@ export default function Home() {
       </div>
       <div className='pageContainer' style={{display: page === 5 ? 'inherit' : 'none'}}>
         <PH pageSetter={setPage} pageVal={page} />
+      </div>
+      <div className='pageContainer' style={{display: page === 6 ? 'inherit' : 'none'}}>
+        <Settings pageSetter={setPage} pageVal={page} />
       </div>
     </div>
   )

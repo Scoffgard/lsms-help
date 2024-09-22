@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import TextBlock from './TextBlock';
 
+import { showId } from '../utlis';
+
 import '../styles/Soins.css';
 
 export default function RefusSoins(props) {
@@ -36,7 +38,7 @@ export default function RefusSoins(props) {
     <>
       <div className='left'>
         <TextBlock>
-          - **Prénom Nom du LSMS :** {report['lsms-name']}<br />
+          - **Prénom Nom du SAMS :** {report['lsms-name']} {showId()}<br />
           - **Prénom Nom ID du patient :** {report['patient-name']}<br />
           - **Date et Heure de la prise en charge :** {generateDateString(loadDate)}<br />
           - **Récapitulatif des blessures :** {report['soins-recap']}<br />
@@ -79,12 +81,12 @@ export default function RefusSoins(props) {
                 }
               />
             </div>
-            <p className='save'
+            {/* <p className='save'
               onClick={() => {
                 window.localStorage.setItem('lsms-name', report['lsms-name']);
                 setHasClicked(true);
               }}
-            >{hasClicked ? 'Enregistré !' : 'Enregistrer pour plus tard'}</p>
+            >{hasClicked ? 'Enregistré !' : 'Enregistrer pour plus tard'}</p> */}
           </div>
           <div className='reportInput'>
             <label htmlFor="patient-name">Prénom, Nom et ID du patient : *</label>

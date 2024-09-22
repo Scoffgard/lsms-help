@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import TextBlock from './TextBlock';
 
+import { showId, toFormatedPrice } from '../utlis';
+
 import '../styles/Soins.css';
-import { toFormatedPrice } from '../utlis';
 
 export default function Soins(props) {
 
@@ -134,7 +135,7 @@ export default function Soins(props) {
     <>
       <div className='left'>
         <TextBlock>
-          - **Prénom Nom du SAMS :** {report['lsms-name']}<br />
+          - **Prénom Nom du SAMS :** {report['lsms-name']} {showId()}<br />
           - **Prénom Nom ID du patient :** {report['patient-name']}<br />
           - **Date de naissance :** {report['patient-bd']}<br />
           - **Profession :** {report['patient-job'] || '//'}<br />
@@ -164,7 +165,7 @@ export default function Soins(props) {
                 name: report['patient-name'],
                 cost: calculateCostValue(),
               }));
-              props.pageSetter(3) // Page des impayés
+              props.pageSetter(4) // Page des impayés
             }}
             style={{
               '--text-color': '#f62'
@@ -178,7 +179,7 @@ export default function Soins(props) {
                 name: report['patient-name'],
                 cost: calculateCostValue(),
               }));
-              props.pageSetter(4) // Page des SAST
+              props.pageSetter(5) // Page des SAST
             }}
             style={{
               '--text-color': '#99f'
@@ -211,12 +212,12 @@ export default function Soins(props) {
                 }
               />
             </div>
-            <p className='save'
+            {/* <p className='save'
               onClick={() => {
                 window.localStorage.setItem('lsms-name', report['lsms-name']);
                 setHasClicked(true);
               }}
-            >{hasClicked ? 'Enregistré !' : 'Enregistrer pour plus tard'}</p>
+            >{hasClicked ? 'Enregistré !' : 'Enregistrer pour plus tard'}</p> */}
           </div>
           <div className="oneLiner">
             <div className='reportInput'>

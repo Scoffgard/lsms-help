@@ -5,3 +5,8 @@ export const newDate = (val) => {
 }
 
 export const toFormatedPrice = (val) => val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+export const showId = () => {
+  if (window.localStorage.getItem('lsms-force-id') == 'true') return window.localStorage.getItem('lsms-id');
+  return ''
+}

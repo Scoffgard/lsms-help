@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import TextBlock from './TextBlock';
 
+import { showId } from '../utlis';
+
 import '../styles/Soins.css';
 
 export default function Impayes(props) {
@@ -43,7 +45,7 @@ export default function Impayes(props) {
     <>
       <div className='left'>
         <TextBlock>
-          Prénom Nom du LSMS à rembourser : {report['lsms-name']}<br />
+          Prénom Nom du SAMS à rembourser : {report['lsms-name']} {showId()}<br />
           Prénom Nom ID du patient : {report['patient-name']}<br />
           Date de l'impayés : {generateDateString(loadDate)}<br />
           Somme à rembourser : {(report['cost'] || '0').replace(/\B(?=(\d{3})+(?!\d))/g, ",")} $
@@ -78,12 +80,12 @@ export default function Impayes(props) {
                 }
               />
             </div>
-            <p className='save'
+            {/* <p className='save'
               onClick={() => {
                 window.localStorage.setItem('lsms-name', report['lsms-name']);
                 setHasClicked(true);
               }}
-            >{hasClicked ? 'Enregistré !' : 'Enregistrer pour plus tard'}</p>
+            >{hasClicked ? 'Enregistré !' : 'Enregistrer pour plus tard'}</p> */}
           </div>
           <div className='reportInput'>
             <label htmlFor="patient-name">Prénom, Nom et ID du patient : *</label>
