@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Soins from '../components/Soins';
 import Service from '../components/Service';
 import RefusSoins from '../components/RefusSoins';
+import Morgue from '../components/Morgue';
 import Impayes from '../components/Impayes';
 import Sast from '../components/Sast';
 import PH from '../components/PH';
@@ -30,6 +31,7 @@ export default function Home() {
     'Service',
     'Rapport de soins',
     'Refus de soins',
+    'Morgue',
     'Impayés',
     'SAST',
     'PH',
@@ -178,7 +180,7 @@ export default function Home() {
     <div className="home">
       { showTip ?
         <div className='helper'>
-          Psst : Pour enregistrer le nom vous avez maintenant l'onglet :&nbsp;
+          Psst : Pour enregistrer votre nom vous avez maintenant l'onglet :&nbsp;
           <span 
             className="link"
             onClick={() => setPage(7)}
@@ -211,15 +213,18 @@ export default function Home() {
         <RefusSoins pageSetter={setPage} pageVal={page} />
       </div>
       <div className='pageContainer' style={{display: page === 3 ? 'inherit' : 'none'}}>
-        <Impayes pageSetter={setPage} pageVal={page} />
+        <Morgue pageSetter={setPage} pageVal={page} />
       </div>
       <div className='pageContainer' style={{display: page === 4 ? 'inherit' : 'none'}}>
-        <Sast pageSetter={setPage} pageVal={page} />
+        <Impayes pageSetter={setPage} pageVal={page} />
       </div>
       <div className='pageContainer' style={{display: page === 5 ? 'inherit' : 'none'}}>
-        <PH pageSetter={setPage} pageVal={page} />
+        <Sast pageSetter={setPage} pageVal={page} />
       </div>
       <div className='pageContainer' style={{display: page === 6 ? 'inherit' : 'none'}}>
+        <PH pageSetter={setPage} pageVal={page} />
+      </div>
+      <div className='pageContainer' style={{display: page === 7 ? 'inherit' : 'none'}}>
         <Settings pageSetter={setPage} pageVal={page} />
       </div>
     </div>
