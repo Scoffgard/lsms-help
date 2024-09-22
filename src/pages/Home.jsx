@@ -23,7 +23,7 @@ export default function Home() {
   const [soinsList, setSoinsList] = useState([1]);
   const [soinsCurrent, setSoinsCurrent] = useState(1);
 
-  const [showTip, setShowTip] = useState(true);
+  const [showTip, setShowTip] = useState(window.localStorage.getItem('showTip') == "false" ? false : true);
 
   const [nameList, setNameList] = useState([]);
 
@@ -37,6 +37,11 @@ export default function Home() {
     'PH',
     'Paramètres',
   ];
+
+  const handleTipClick = (value) => {
+    setShowTip(value)
+    window.localStorage.setItem('showTip', value);
+  }
 
   const generateSoinsList = () => {
     let soinsEle = [];
@@ -187,14 +192,14 @@ export default function Home() {
           >Paramètres</span>&emsp;
           <span 
             className='tipaction'
-            onClick={() => setShowTip(false)}
+            onClick={() => handleTipClick(false)}
           >✖</span>
         </div>
         :
         <div className='helper'>
           <span 
             className='tipaction'
-            onClick={() => setShowTip(true)}
+            onClick={() => handleTipClick(true)}
           ><b>?</b></span>
         </div>
       }
