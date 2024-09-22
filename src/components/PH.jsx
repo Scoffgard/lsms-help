@@ -4,7 +4,7 @@ import TextBlock from './TextBlock';
 import '../styles/Soins.css';
 import { newDate } from '../utlis';
 
-export default function LspdBcso(props) {
+export default function PH(props) {
 
   const [report, setReport] = useState({});
 
@@ -20,11 +20,10 @@ export default function LspdBcso(props) {
   }
 
   useEffect(() => {
-    if (window.localStorage.getItem('lsms-name')) {
-      const newReport = {...report};
-      newReport['lsms-name'] = window.localStorage.getItem('lsms-name');
-      setReport(newReport)
-    }
+    const newReport = {...report};
+    if (window.localStorage.getItem('lsms-name')) newReport['lsms-name'] = window.localStorage.getItem('lsms-name');
+    if (window.localStorage.getItem('lsms-id')) newReport['lsms-id'] = window.localStorage.getItem('lsms-id');
+    setReport(newReport)
   }, [props.pageVal]);
 
   const getDateString = () => {
@@ -41,16 +40,12 @@ export default function LspdBcso(props) {
           Prénom Nom | ID de l'équipage présent dans l'appareil :<br />
           <br />
           - {report['lsms-name']} | {report['lsms-id']}<br />
-          {report['copilot-1'] &&
-            <>
-              - {report['copilot-1']}<br />
-            </>
-          }
-          {report['copilot-2'] &&
-            <>
-              - {report['copilot-2']}<br />
-            </>
-          }
+          {report['copilot-1'] && '- '}
+          {report['copilot-1']}
+          {report['copilot-1'] && <br />}
+          {report['copilot-2'] && '- '}
+          {report['copilot-2']}
+          {report['copilot-2'] && <br />}
           <br />
           Raison du départ : {report['inter-reason']}<br />
           <br />
