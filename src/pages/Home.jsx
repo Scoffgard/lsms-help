@@ -100,6 +100,76 @@ export default function Home() {
     </>)
   }
 
+  const clearLocalStorage = () => {
+
+    console.log('test')
+    window.localStorage.removeItem('lsms-id');
+    window.localStorage.removeItem('lsms-name');
+    window.localStorage.removeItem('service-actions');
+    window.localStorage.removeItem('service-others');
+    window.localStorage.removeItem('service-start-date');
+
+    if (
+      window.confirm("Nettoyage effectué, cliquez sur \"OK\" pour réessayer le transfert, sinon cliquez sur \"Annuler\"")
+    ) window.location.href="https://lsms.scoffgard.com/";
+    else window.location.href="https://sams.scoffgard.com/";
+  }
+  
+  const launchTransfer = () => {
+    const transferData = {
+      lsmsId: window.localStorage.getItem('lsms-id'),
+      lsmsName: window.localStorage.getItem('lsms-name'),
+      serviceActions: window.localStorage.getItem('service-actions'),
+      serviceOthers: window.localStorage.getItem('service-others'),
+      serviceStartDate: window.localStorage.getItem('service-start-date'),
+    }
+
+    const transferDataEncoded = encodeURIComponent(JSON.stringify(transferData));
+
+    window.location.href="https://sams.scoffgard.com/?data=" + transferDataEncoded;
+  }
+
+  const applyTransfer = () => {
+    const queryParameters = new URLSearchParams(window.location.search);
+    const transferDataUnparsed = queryParameters.get("data");
+
+    if (!transferDataUnparsed) return;
+
+    try {
+      const transferData = JSON.parse(transferDataUnparsed);
+      
+      window.localStorage.setItem('lsms-id', transferData.lsmsId || "");
+      window.localStorage.setItem('lsms-name', transferData.lsmsName || "");
+      window.localStorage.setItem('service-actions', transferData.serviceActions || []);
+      window.localStorage.setItem('service-others', transferData.serviceOthers || []);
+      window.localStorage.setItem('service-start-date', transferData.serviceStartDate);
+
+      alert("Transfert effectué, la page va maintenant recharger afin de charger les données.");
+      window.location.href="https://sams.scoffgard.com/";
+    } catch (e) {
+      alert("Transfert impossible, merci de contacter le propriétaire du site.")
+    }
+  }
+
+  useEffect(() => {
+    if (
+      window.location.hostname.includes('lsms') && 
+      window.confirm("Le site va changer d'adresse pour devenir : https://sams.scoffgard.com. La cloture de cette adresse aura lieu le 15/09/2024. Un transfert de données automatique est disponible. Cliquez sur \"OK\" pour lancer le transfert. Cliquez sur \"Annuler\" pour rester sur ce site.")
+    ) {
+      launchTransfer();
+    } else if (
+      window.location.hostname.includes('sams')
+    ) {
+      const queryParameters = new URLSearchParams(window.location.search);
+      const transferDataUnparsed = queryParameters.get("data");
+
+      if (!transferDataUnparsed) return;
+
+      if (transferDataUnparsed === 'clear') clearLocalStorage();
+      else applyTransfer();
+    }
+  }, [])
+
   return (
     <div className="home">
       {/*<img src={ChristmasHat} className='hat'/>
