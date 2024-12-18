@@ -73,7 +73,7 @@ export default function Settings(props) {
           />
         </div>
       </div>
-      <div className='copyright'>Made with ❤️ by <a href="https://github.com/Scoffgard/lsms-help" target="_blank">Scoffgard</a> (AKA: Antoine Cumsi)</div>
+      <div className='copyright'>Made with ❤️ by <a href="https://github.com/Scoffgard/lsms-help" target="_blank">Scoffgard</a> (AKA: Antoine Cumsi | 1924)</div>
     </div>
   )
 }
