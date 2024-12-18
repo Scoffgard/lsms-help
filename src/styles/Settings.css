@@ -1,0 +1,12 @@
+.copyright {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+
+  color: #888;
+}
+
+.copyright a {
+  color: #999;
+  text-decoration: underline;
+}

@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import '../styles/Soins.css';
+import '../styles/Settings.css';
 
 export default function Settings(props) {
 
@@ -72,6 +73,7 @@ export default function Settings(props) {
           />
         </div>
       </div>
+      <div className='copyright'>Made with ❤️ by <a href="https://github.com/Scoffgard/lsms-help" target="_blank">Scoffgard</a> (AKA: Antoine Cumsi)</div>
     </div>
   )
 }
