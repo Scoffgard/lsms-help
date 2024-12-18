@@ -124,7 +124,9 @@
 
   pointer-events: none;
 
-  animation: snowDisapear 3s 2s forwards;
+  opacity: .3;
+
+  /* animation: snowDisapear 3s 2s forwards; */
 }
 
 .home .helper {
@@ -151,11 +153,11 @@
   cursor: pointer;
 }
 
-@keyframes snowDisapear {
+/* @keyframes snowDisapear {
   from {
     opacity: .7;
   }
   to {
     opacity: 0;
   }
-}
+} */
