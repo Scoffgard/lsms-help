@@ -12,7 +12,7 @@ import Settings from '../components/Settings';
 
 import {ReactComponent as Cross} from '../assets/cross.svg';
 
-//import ChristmasHat from '../assets/christmas_hat.png';
+import ChristmasHat from '../assets/christmas_hat.png';
 
 import '../styles/Home.css';
 
@@ -203,8 +203,8 @@ export default function Home() {
           ><b>?</b></span>
         </div>
       }
-      {/*<img src={ChristmasHat} className='hat'/>
-      <div className='snow'/>*/}
+      <img src={ChristmasHat} className='hat'/>
+      <div className='snow'/>
       <h1>Aide SAMS</h1>
       <Header page={page} setPage={setPage} entries={menuEntries} />
 
