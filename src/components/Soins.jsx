@@ -116,7 +116,7 @@ export default function Soins(props) {
         case 'injuries':
           if (!costs[name]) break;
           console.log(costs[name])
-          detailsList.push('Blessure ' + (costs[name] === '5000' ? 'Grave' : costs[name] === '2500' ? 'Moyenne' : 'Légére') + ' : ' + toFormatedPrice(costs[name]) + ' $');
+          detailsList.push('Blessure ' + (costs[name] === '5000' ? 'Grave' : costs[name] === '2500' ? 'Moyenne' : 'Légère') + ' : ' + toFormatedPrice(costs[name]) + ' $');
           break;
         case 'room': 
           if (!costs[name]) break;
